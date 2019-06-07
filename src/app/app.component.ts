@@ -6,12 +6,36 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  palabra = 'AGUACATE';
+
+  palabraOculta = '';
+
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
             'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
             'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   
   constructor() {
-    console.log('Se acaba de crear la App Component');
+    
+    this.palabraOculta = '_ '.repeat( this.palabra.length );
+
+  }
+
+  comprobar(letra) {
+
+    let palabraOcultaArr = this.palabraOculta.split(' ');
+
+    for(let i = 0; i < this.palabra.length; i++) {
+
+      if(this.palabra[i] === letra) {
+
+        palabraOcultaArr[i] = letra;
+
+      }
+
+    }
+
+    this.palabraOculta = palabraOcultaArr.join(' ');
+
   }
 
 }
